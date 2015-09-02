@@ -1,0 +1,14 @@
+<style>
+  jira-issue > div > *{
+    vertical-align:middle;
+    display:inline-block;
+  }
+</style>
+<div style="display:inline-block">
+  <jira-issue-info params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-info>
+  <jira-issue-transitions params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-transitions>
+  <jira-issue-comment params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-comment>
+  <jira-issue-summary params="jiraIssue:$data"></jira-issue-summary>
+  <jira-issue-comment-last params="jiraIssue:$data"></jira-issue-comment-last>
+  <pre data-bind="text:lastErrorString,visible:lastErrorString()"></pre>
+</div>

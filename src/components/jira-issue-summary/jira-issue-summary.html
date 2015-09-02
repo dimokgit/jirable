@@ -1,0 +1,18 @@
+<style>
+  jira-issue-summary p {
+    -webkit-transition: all .5s  ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+
+  jira-issue-summary .comment-loaded {
+    color:#003399;
+  }
+
+  jira-issue-summary .comment-loaded-not {
+    color: transparent;
+  }
+</style>
+
+<p class="bg-warning" data-bind="text: summary,css:{'comment-loaded':isLoaded(),'comment-loaded-not':!isLoaded()}"></p>

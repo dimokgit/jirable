@@ -1,0 +1,22 @@
+{
+  "name": "jirable",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "components-bootstrap": "~3.1.1",
+    "crossroads": "~0.12.0",
+    "data-ui": "http://usmrtpwjirq01.corp.itauinternational.com:7990/scm/jsl/data-ui.git",
+    "hasher": "~1.2.0",
+    "jasmine-core": "jasmine#~2.3.4",
+    "jquery.extentions": "http://usmrtpwjirq01.corp.itauinternational.com:7990/scm/jsl/jquery.extentions.git",
+    "knockout": "~3.3.0-alpha",
+    "knockout-projections": "~1.1.0",
+    "monads": "http://usmrtpwjirq01.corp.itauinternational.com:7990/scm/jsl/monads.git",
+    "requirejs": "~2.1.11",
+    "requirejs-text": "~2.0.10",
+    "underscore": "~1.8.3"
+  },
+  "resolutions": {
+    "knockout": "~3.3.0-alpha"
+  }
+}

@@ -1,0 +1,23 @@
+<style>
+  label {
+  color:#003399;
+  }
+  jira-issue-info input.form-control input-sm{
+    color:#3b73af;
+  }
+  jira-issue-info div.form-group *{
+    vertical-align:middle;
+  }
+  jira-issue-info .issue-status{
+    text-transform: uppercase;
+    font-family:monospace;
+  }
+  jira-issue-info input.text-danger{
+    background-color: lightpink;
+    font-weight:bold;
+  }
+
+</style>
+   <label for="inputsm" style="display:inline-block">Issue:</label>
+    <input class="form-control" id="inputsm" type="text" style="width:8em;display:inline-block" data-bind="textInput:issueKey,css:{'text-danger':!hasIssueKey()}">
+    <a class="btn btn-info btn-link text-uppercase issue-status" data-bind="text:issueStatus,attr:{href:browseLink}" style=""></a>

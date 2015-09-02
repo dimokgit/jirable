@@ -1,0 +1,10 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "jasmine": "~2.0.0",
+    "jasmine-core": "jasmine#~2.3.4",
+    "requirejs": "~2.1.11"
+  }
+}
