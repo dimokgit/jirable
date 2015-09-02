@@ -1,13 +1,16 @@
 {
   "name": "jirable",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "main": "lib/*.*",
   "private": true,
+  "ignore": [
+    "*",
+    "!lib/",
+    "!lib/*"
+  ],
   "dependencies": {
     "components-bootstrap": "~3.1.1",
-    "crossroads": "~0.12.0",
     "data-ui": "http://usmrtpwjirq01.corp.itauinternational.com:7990/scm/jsl/data-ui.git",
-    "hasher": "~1.2.0",
-    "jasmine-core": "jasmine#~2.3.4",
     "jquery.extentions": "http://usmrtpwjirq01.corp.itauinternational.com:7990/scm/jsl/jquery.extentions.git",
     "knockout": "~3.3.0-alpha",
     "knockout-projections": "~1.1.0",
@@ -18,5 +21,10 @@
   },
   "resolutions": {
     "knockout": "~3.3.0-alpha"
+  },
+  "devDependencies": {
+    "hasher": "~1.2.0",
+    "crossroads": "~0.12.0",
+    "jasmine-core": "~2.3.4"
   }
 }

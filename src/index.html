@@ -12,35 +12,9 @@
   <script src="app/require.config.js"></script>
   <script data-main="app/startup" src="bower_modules/requirejs/require.js"></script>
   <!-- endbuild -->
-  <style>
-    #loader {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 1);
-      transition: background 1s ease-out;
-      -webkit-transition: background 1s ease-out;
-    }
-
-      #loader.done {
-        background: rgba(255, 255, 255, 0);
-      }
-
-      #loader.hide {
-        display: none;
-      }
-
-      #loader .message {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-      }
-  </style>
 </head>
 <body>
   <nav-bar params="route: route"></nav-bar>
   <div id="page" class="container" data-bind="component: { name: route().page, params: route }"></div>
-<!--  <div id='loader'><span class='message'>loading</span></div>-->
 </body>
 </html>
