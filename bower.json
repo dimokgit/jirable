@@ -6,7 +6,7 @@
   "ignore": [
     "*",
     "!lib/",
-    "!lib/*"
+    "!lib/**/*"
   ],
   "dependencies": {
     "components-bootstrap": "~3.1.1",
