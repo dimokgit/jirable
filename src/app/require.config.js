@@ -15,6 +15,7 @@ var require = {
     "signals": "bower_modules/js-signals/dist/signals.min",
     "text": "bower_modules/requirejs-text/text",
     "underscore":"bower_modules/underscore/underscore",
+
     "promise-monad": "bower_modules/monads/lib/promise-monad",
     "objecter": "bower_modules/jquery.extentions/lib/objecter",
     "jira-settings": "app/jira-settings",

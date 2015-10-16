@@ -19,7 +19,7 @@
     return combinePath( args);
   }
   function buildBrowseUrl(issueKey) {
-    return combinePath(baseUrl, browse, issueKey);
+    return issueKey ? combinePath(baseUrl, browse, issueKey) : baseUrl;
   }
   function buildIssueUrl(issueKey) {
     return combinePath(buildPath(issue, issueKey), args(arguments).slice(1));
