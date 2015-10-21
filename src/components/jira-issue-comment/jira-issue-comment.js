@@ -10,16 +10,14 @@ define(['knockout', 'text!./jira-issue-comment.html', "jquery","objecter", "asSu
     this.commentNew = jiraIssue("commentNew");
     this.addComment = function () {
       this.isCommentLoading(true);
-      jiraSettings
+      jiraSettings.restServer
         .postIssueComment(issue().key, this.commentNew)
         .done(function () {
           this.commentNew("");
           this.isCommentLoaded(true);
           setTimeout(function () { this.isCommentLoaded(false); }.bind(this), 1000);
         }.bind(this))
-        .fail(function (e) {
-          lastError(e);
-        })
+        .fail(jiraSettings.restServer.showError.bind(null, "JIRA PostComment"))
         .always(function () {
           this.isCommentLoading(false);
         }.bind(this));

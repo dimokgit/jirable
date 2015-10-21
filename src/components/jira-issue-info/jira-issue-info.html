@@ -22,13 +22,24 @@
   }
 </style>
 <div class="btn-toolbar" role="toolbar" aria-label="...">
-  <div class="btn-group btn-group-xs" role="group" aria-label="...">
-    <img src="images/spinning-wheel-ios.gif" width="32" data-bind="visible:isLoading" style="display:none"/>
-    <!-- ko ifnot:isLoading -->
-    <a data-bind="attr:{href:browseLink}" style="vertical-align:text-bottom"><img src="images/jira-big.png" width="32" /></a>
+  <div class="btn-group btn-group-sm" role="group" aria-label="...">
+    <!-- ko ifnot:loginRequired -->
+    <img src="images/exit.png" data-bind="click:logOff" title="Click to log off from JIRA"  width="32" style="cursor:pointer" />
     <!-- /ko -->
-      <input class="form-control" id="inputsm" type="text" style="width:8em;display:inline-block" data-bind="textInput:issueKey,css:{'text-danger':!hasIssueKey()}">
+    <img src="images/spinning-wheel-ios.gif" width="32" data-bind="visible:isLoading" style="display:none" />
+    <!-- ko ifnot:isLoading -->
+    <a data-bind="attr:{href:browseLink,title:'Logged in as:'+jiraUser()}" style="vertical-align:text-bottom"><img src="images/jira-big.png" width="32" style="cursor:pointer" /></a>
+    <!-- /ko -->
+    <!-- ko if:loginRequired -->
+    <a data-bind="attr:{href:baseUrl}" class="btn btn-danger btn-sm" target="_blank" >Please login to JIRA</a>
+    Name:<input data-bind="value:jiraUser" style="width:10em" />Password:<input data-bind="value:jiraPassword" type="password" style="width:10em" />
+    <button class="glyphicon glyphicon-log-in" title="Login"></button>
+    <!-- /ko -->
+    <!-- ko ifnot:loginRequired -->
+    <input class="form-control" id="inputsm" type="text" style="width:8em;display:inline-block" data-bind="value:issueKey,css:{'text-danger':!hasIssueKey()}" placeholder="Ticket Key">
+    <!-- /ko -->
   </div>
+  <!-- ko ifnot:loginRequired -->
   <div class="btn-group btn-group-xs" role="group" aria-label="...">
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle issue-status" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -40,7 +51,7 @@
         <li><a href="#" data-bind="text:name,click:$parent.postTransition"></a></li>
       </ul>
     </div>
-    </div>
+  </div>
   <div class="btn-group btn-group-xs" role="group" aria-label="..." data-bind="visible:issueLinks().length">
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle issue-status" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -52,4 +63,5 @@
       </ul>
     </div>
   </div>
+  <!-- /ko -->
 </div>

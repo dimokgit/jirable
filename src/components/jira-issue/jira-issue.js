@@ -1,10 +1,15 @@
-define(['knockout', 'text!./jira-issue.html'], function(ko, templateMarkup) {
+define(['knockout', 'text!./jira-issue.html', 'objecter', 'asSubscribable', "jira-settings", "ko.extensions"], function (ko, templateMarkup, O, asSubscribable, jiraSettings) {
 
   function JiraIssue(params) {
-    this.issueKey = ko.observable("ops-1");
+    asSubscribable.call(this);
+    var isLoggedIn = ko.pureComputed(function () { return jiraSettings.restServer.isLoggedIn(); });
+    var jiraTickets = O.sure(params, "jiraTickets");
+    var issueKey = this.issueKey = ko.observable();
+    setIssueKey(jiraTickets());
+    this.subscribe(jiraTickets, setIssueKey);
     var issue = this.issue = ko.observable({});
     this.hasIssue = ko.pureComputed(function () {
-      return (issue() || {}).key;
+      return (issue() || {}).key && isLoggedIn();
     });
     this.issueFields = ko.pureComputed(function () {
       return (issue() || {}).fields || {};
@@ -16,13 +21,18 @@ define(['knockout', 'text!./jira-issue.html'], function(ko, templateMarkup) {
     this.lastErrorString = ko.pureComputed(function () {
       var le = this.lastError();
       return typeof le === "string" ? le : JSON.stringify(le, null, 2);
-    },this);
+    }, this);
+    function setIssueKey(jts) {
+      jts.concat([""]).slice(0, 1).forEach(function (jt) {
+        issueKey(jt);
+      });
+    }
   }
 
   // This runs when the component is torn down. Put here any logic necessary to clean up,
   // for example cancelling setTimeouts or disposing Knockout subscriptions/computeds.
-  JiraIssue.prototype.dispose = function() { };
-  
+  JiraIssue.prototype.dispose = function () { };
+
   return { viewModel: JiraIssue, template: templateMarkup };
 
 });
