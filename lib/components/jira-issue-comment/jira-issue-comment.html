@@ -12,8 +12,6 @@
     background-color:#c5eaf6;
   }
 </style>
-<!-- ko if: hasIssue -->
 <input class="form-control success-flash" type="text" style="width:20em;display:inline-block;vertical-align:inherit;"
        data-bind="value:commentNew,css:{'comment-loaded':isCommentLoaded(),'comment-loading':isCommentLoading()}" placeholder="add comment">
-<button data-bind="click:addComment">Add</button>
-<!-- /ko -->
+<span data-bind="click:addComment" class="btn btn-primary btn-sm">Add</span>
