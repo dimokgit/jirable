@@ -2,6 +2,8 @@ define(['knockout', 'text!./jira-issue.html', 'objecter', 'asSubscribable', "jir
 
   function JiraIssue(params) {
     asSubscribable.call(this);
+    this.serverSessionID = O.sure(jiraSettings, "serverSessionID");
+    this.jSessionID = O.sure(jiraSettings, "jSessionID");
     var isLoggedIn = ko.pureComputed(function () { return jiraSettings.restServer.isLoggedIn(); });
     var jiraTickets = O.sure(params, "jiraTickets");
     var issueKey = this.issueKey = ko.observable();

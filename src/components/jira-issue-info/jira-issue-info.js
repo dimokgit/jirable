@@ -16,6 +16,7 @@ define(['knockout', 'text!./jira-issue-info.html', "objecter", 'asSubscribable',
 
     //#region properties/methods
     this.baseUrl = O.sure(jiraSettings, "baseUrl");
+    this.isRestLogin = O.sure(jiraSettings, "isRestLogin");
     var loginRequired = this.loginRequired = ko.pureComputed(function () {
       return !jiraSettings.restServer.isLoggedIn();
     });
