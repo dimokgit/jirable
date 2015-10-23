@@ -6,7 +6,7 @@ define(['knockout', 'text!./jira-issue.html', 'objecter', 'asSubscribable', "jir
     this.jSessionID = O.sure(jiraSettings, "jSessionID");
     var isLoggedIn = ko.pureComputed(function () { return jiraSettings.restServer.isLoggedIn(); });
     var jiraTickets = O.sure(params, "jiraTickets");
-    var issueKey = this.issueKey = ko.observable();
+    var issueKey = this.issueKey = ko.observable().extend({ persist: "JIRA_issueKey" });
     setIssueKey(jiraTickets());
     this.subscribe(jiraTickets, setIssueKey);
     var issue = this.issue = ko.observable({});
@@ -25,7 +25,7 @@ define(['knockout', 'text!./jira-issue.html', 'objecter', 'asSubscribable', "jir
       return typeof le === "string" ? le : JSON.stringify(le, null, 2);
     }, this);
     function setIssueKey(jts) {
-      jts.concat([""]).slice(0, 1).forEach(function (jt) {
+      jts.slice(0, 1).forEach(function (jt) {
         issueKey(jt);
       });
     }

@@ -5,16 +5,27 @@
   }
 </style>
 <div style="display:inline-block">
-  <jira-issue-info params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-info>
-  <!-- ko if: hasIssue -->
-  <jira-issue-comment params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-comment>
-  <jira-issue-summary params="jiraIssue:$data"></jira-issue-summary>
-  <jira-issue-comment-last params="jiraIssue:$data"></jira-issue-comment-last>
-  <!-- /ko -->
+  <table>
+    <tr>
+      <td>
+        <jira-issue-info params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-info>
+      </td>
+      <td rowspan="2">
+        <!-- ko if: hasIssue -->
+        <jira-issue-summary params="jiraIssue:$data"></jira-issue-summary>
+        <jira-issue-comment-last params="jiraIssue:$data"></jira-issue-comment-last>
+        <!-- /ko -->
+      </td>
+    </tr>
+    <!-- ko if: hasIssue -->
+    <tr>
+      <td>
+        <jira-issue-comment params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-comment>
+      </td>
+    </tr>
+    <!-- /ko -->
+  </table>
+  <br />
   <pre data-bind="text:lastErrorString,visible:lastErrorString()"></pre>
-  <div>
-    <label>serverSessionID:</label>:<pre data-bind="text:serverSessionID"></pre>
-    <label>jSessionID:</label>:<pre data-bind="text:jSessionID"></pre>
-  </div>
 </div>
 
