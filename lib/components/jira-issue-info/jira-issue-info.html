@@ -38,7 +38,7 @@
     <button class="glyphicon glyphicon-log-in" title="Login"></button>
     <!-- /ko -->
     <!-- ko ifnot:loginRequired -->
-    <input class="form-control" id="inputsm" type="text" style="width:8em;display:inline-block" data-bind="value:issueKey,css:{'text-danger':!hasIssueKey()}" placeholder="Ticket Key">
+    <input class="form-control" id="inputsm" type="text" style="width:8em;display:inline-block" data-bind="value:issueKey,css:{'text-danger':!hasIssueKey()},disable:hasJiraTicketsParam" placeholder="Ticket Key">
     <!-- /ko -->
   </div>
   <!-- ko ifnot:loginRequired -->

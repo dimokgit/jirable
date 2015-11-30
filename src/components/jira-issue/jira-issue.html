@@ -11,13 +11,13 @@
         <jira-issue-info params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-info>
       </td>
       <td rowspan="2">
-        <!-- ko if: hasIssue -->
+        <!-- ko if: hasIssueKey -->
         <jira-issue-summary params="jiraIssue:$data"></jira-issue-summary>
         <jira-issue-comment-last params="jiraIssue:$data"></jira-issue-comment-last>
         <!-- /ko -->
       </td>
     </tr>
-    <!-- ko if: hasIssue -->
+    <!-- ko if: hasIssueKey -->
     <tr>
       <td>
         <jira-issue-comment params="jiraIssue:$data" style="vertical-align:top;display:inline-block"></jira-issue-comment>
