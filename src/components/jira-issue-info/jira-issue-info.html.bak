@@ -45,7 +45,8 @@
   <div class="btn-group btn-group-xs" role="group" aria-label="...">
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle issue-status" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span data-bind="text:issueStatus"></span>
+        <!-- ko text:issueStatus -->
+        <!-- /ko -->
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data-bind="foreach:transitions">

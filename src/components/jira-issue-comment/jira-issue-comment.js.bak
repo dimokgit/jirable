@@ -8,7 +8,6 @@ define(['knockout', 'text!./jira-issue-comment.html', "jquery","objecter", "asSu
     this.isCommentLoading = ko.observable(false);
     this.commentNew = jiraIssue("commentNew");
     this.addComment = function () {
-      if (!this.commentNew()) return;
       this.isCommentLoading(true);
       jiraSettings.restServer
         .postIssueComment(issue().key, this.commentNew)
