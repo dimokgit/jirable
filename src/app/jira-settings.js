@@ -1,4 +1,4 @@
-define(['ko', 'jquery', "objecter", 'promise-monad', "swagger-client", "ko.extensions"], function (ko, $, O, PM, swagger) {
+define(['ko', 'jquery', "objecter", 'promise-monad', "swagger-client","rooter", "ko.extensions"], function (ko, $, O, PM, swagger,rooter) {
   var baseUrl = "http://usmrtpwjirq01.corp.itauinternational.com:82/";
   //var baseUrl = "http://jira.corp.itauinternational.com:81/secure/Dashboard.jspa";
   var sessionPath = "includes/js/GetSession.jsp";//"session/GetSession.jsp";
@@ -181,7 +181,6 @@ define(['ko', 'jquery', "objecter", 'promise-monad', "swagger-client", "ko.exten
       jiraPassword("");
     }
     var baseHost = location.origin;
-    getHostUrl = function (paths) { return combinePath(baseHost, paths); }
     ko.computed(function () {
       var args = [jiraUser(), jiraPassword()];
       if (args.every(function (v) { return v; }))
@@ -224,6 +223,8 @@ define(['ko', 'jquery', "objecter", 'promise-monad', "swagger-client", "ko.exten
     var swTestSessionID;
     // Init swagger client
     var swaggerLoaded = this.swaggerLoaded = $.Deferred();
+    rooter.done(function (root) {
+      function getHostUrl(paths) { return combinePath(baseHost,root, paths); }
     var exports = new swagger({
       url: getHostUrl("/swagger/docs/v1"),
       success: function () {
@@ -267,7 +268,9 @@ define(['ko', 'jquery', "objecter", 'promise-monad', "swagger-client", "ko.exten
         swaggerLoaded.resolve(exports);
       },
       failure: showError.bind(null, "restClient falied")
+      })
     });
+
     //#endregion
   })(jSessionID);
 

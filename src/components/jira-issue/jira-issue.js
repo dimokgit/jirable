@@ -34,6 +34,23 @@ define(['knockout', 'text!./jira-issue.html', 'objecter', 'asSubscribable', "jir
         issueKey(jt);
       });
     }
+
+    // Keep it for future references
+    function createTicket(summary, description) {
+      return $.ajax({
+        url: appConfig.hpsJiraBase + "PostTicket/test/new feature",
+        type: "GET",
+        data: { summary: summary, description: description },
+        xhrFields: { withCredentials: true },
+        success: function (v) {
+          //alert(JSON.stringify(v, null, 2));
+        },
+        error: function (e) {
+          alert(JSON.stringify(e, null, 2));
+        }
+      });
+    };
+
   }
 
   return { viewModel: JiraIssue, template: templateMarkup };
